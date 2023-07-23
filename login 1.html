@@ -15,13 +15,37 @@
           </div>
         </div>
         <form class="login-form" method="post" action="restaurant 2.html">
-          <input oninvalid="alert('You must fill out the form!');" type="text" name="Uname" onfocus="txt()" id="txt" placeholder="username"/>
-          <input oninvalid="alert('You must fill out the form!');" type="password" name="pass" onfocus="txt()" id="txt" placeholder="password"/>
-          <input class="button" type="submit" name="submit1"5/>
-          <p class="message">Not registered? <a href="">Create an account</a></p>
-        </form>
-      </div>
-    </div>
+        <input type="text" name="name" placeholder="Enter your name" required/>
+        <input type="password" placeholder="Enter the password" name="password" required/>
+        <input class="button" type="submit" name="submit1"/>
+       <p class="message">Not registered? <a href="">Create an account</a></p>
+      </form>
+     </div>
+     <script>
+       const inputs = document.querySelectorAll("input");
+       
+            inputs.forEach((input)=>{
+                 input.addEventListener('keyup',(e)=>{
+                    Valid(e.target,regex[e.target.attributes.name.value]);
+                 })
+               })
+   
+           const regex = {
+                  name:/^\w+$/i,
+                  password:/^[a-zA-Z0-9]{10,100}$/i,
+             }
+   
+            const Valid = (field,reg) =>{
+                if(reg.test(field.value)){
+                    field.className='Valid';
+                }
+                else{
+                    field.className='Invalid';
+                }
+               }
+            
+      </script>
+    </body>
+   </html>
 
-</body>
-</html>
+
